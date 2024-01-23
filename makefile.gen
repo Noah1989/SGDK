@@ -140,7 +140,7 @@ out/symbol.txt: out/rom.out
 	$(NM) $(LTO_PLUGIN) -n out/rom.out > out/symbol.txt
 
 out/rom.out: out/sega.o out/cmd_ $(LIBMD)
-	$(CC) -B$(BIN) -n -T $(GDK)/md.ld -nostdlib out/sega.o @out/cmd_ $(LIBMD) $(LIBGCC) -o out/rom.out -Wl,--gc-sections
+	$(CC) -B$(BIN) -n -T $(GDK)/md.ld -nostdlib -Wl,-build-id=none out/sega.o @out/cmd_ $(LIBMD) $(LIBGCC) -o out/rom.out -Wl,--gc-sections
 	$(RM) out/cmd_
 
 out/cmd_: $(OBJS)
@@ -187,7 +187,7 @@ out/%.o: %.rs
 	$(MACCER) -o $@ $<
 
 %.o80: %.s80
-	$(ASMZ80) $(FLAGSZ80) $< $@ out.lst
+	$(ASMZ80) $(FLAGSZ80) $< --raw=$@ --lst=out.lst
 
 %.s: %.o80
 	$(BINTOS) $<

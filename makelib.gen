@@ -120,7 +120,7 @@ cmd_ : $(OBJ_LIB)
 	$(RESCOMP) $*.res $*.rs -dep $*.o
 
 %.o80: %.s80
-	$(ASMZ80) $(FLAGSZ80_LIB) $< $@ out.lst
+	$(ASMZ80) $(FLAGSZ80_LIB) $< --raw=$@ --lst=out.lst
 
 %.s: %.o80
 	$(BINTOS) $<

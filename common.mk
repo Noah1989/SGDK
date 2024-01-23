@@ -46,7 +46,7 @@ else
 		LIBGCC := $(LIB)/libgcc.a
 	else
 		# Native Linux
-		PREFIX := m68k-elf-
+		PREFIX := m68k-linux-gnu-
 		SHELL = sh
 		RM = rm
 		CP = cp
@@ -57,9 +57,9 @@ else
 		LD := $(PREFIX)ld
 		NM := $(PREFIX)nm
 		OBJCPY := $(PREFIX)objcopy
-		ASMZ80 := sjasm
+		ASMZ80 := sjasmplus
 		MACCER := mac68k
-		BINTOS := bintos
+		BINTOS := $(BIN)/bintos
 	    LTO_PLUGIN :=
 		LIBGCC := -lgcc
 	endif
