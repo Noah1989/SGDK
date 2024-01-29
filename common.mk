@@ -57,7 +57,7 @@ else
 		LD := $(PREFIX)ld
 		NM := $(PREFIX)nm
 		OBJCPY := $(PREFIX)objcopy
-		ASMZ80 := sjasmplus
+		ASMZ80 := $(BIN)/sjasmplus
 		MACCER := mac68k
 		BINTOS := $(BIN)/bintos
 	    LTO_PLUGIN :=
