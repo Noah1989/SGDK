@@ -119,6 +119,9 @@ cmd_ : $(OBJ_LIB)
 %.rs: %.res
 	$(RESCOMP) $*.res $*.rs -dep $*.o
 
+# build drivers first, because header files are needed in z80_ctrl.c
+$(GDK)/src/z80_ctrl.o: $(GDK)/src/z80_drv0.o $(GDK)/src/z80_drv1.o $(GDK)/src/z80_drv2.o $(GDK)/src/z80_drv3.o $(GDK)/src/z80_xgm.o
+
 %.o80: %.s80
 	$(ASMZ80) $(FLAGSZ80_LIB) $< --raw=$@ --lst=out.lst
 
